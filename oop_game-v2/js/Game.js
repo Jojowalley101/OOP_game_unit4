@@ -8,29 +8,25 @@
 class Game {
     constructor() {
         this.missed = 0;
-        this.phrases = [{ phrase: 'Becoming is better than being' },
-        { phrase: 'A company that cannot self-correct cannot thrive' },
-        { phrase: 'Teaching is a wonderful way to learn' },
-        { phrase: 'A growth mindset is belief you can develop abilities' },
-        { phrase: 'You have to work hardest for the things you love most' },
-        { phrase: 'This is hard This is fun' },
-        { phrase: 'Representation matters' },
-        { phrase: 'Dedication hardwork plus patience' },
-        { phrase: 'The marathon continues' },
-        { phrase: 'You are what you choose to be' },
-        { phrase: 'Do not let them dim your light' },
-        { phrase: '' },
-        { phrase: '' },
-        { phrase: '' },
-        { phrase: '' },
-        { phrase: '' },
-        { phrase: '' },
+        this.phrases = [ new Phrase('Becoming is better than being'),
+        new Phrase('A company that cannot self-correct cannot thrive'),
+        new Phrase('Teaching is a wonderful way to learn'),
+        new Phrase('A growth mindset is belief you can develop abilities'),
+        new Phrase('You have to work hardest for the things you love most'),
+        new Phrase('This is hard This is fun'),
+        new Phrase('Representation matters'),
+        new Phrase('Dedication hardwork plus patience'),
+        new Phrase('The marathon continues'),
+        new Phrase('You are what you choose to be'),
+        new Phrase('Do not let them dim your light')
+        // { phrase: '' },
+        // { phrase: '' },
+        // { phrase: '' },
+        // { phrase: '' },
+        // { phrase: '' },
+        // { phrase: '' },
         ];
         this.activePhrase = null;
-    }
-
-    startGame() {
-
     }
 
     /**
@@ -42,15 +38,25 @@ class Game {
         return randomPhrases;
     }
 
+    startGame() {
+        document.getElementById('overlay').style.visibility = 'hidden';
+        const randomPhrase = this.getRandomPhrase();
+        this.activePhrase = randomPhrase;
+        console.log(this.activePhrase);
+        Phrase.addPhraseToDisplay().activePhrase;
+    }
+
     /**
     * Handles onscreen keyboard button clicks
     * @param (HTMLButtonElement) button - The clicked button element
     */
 
+
     handleInteraction() {
-
+        document.querySelector('button').onclick=function() {
+            alert('clicked');
+        }
     }
-
     /**
     * Increases the value of the missed property
     * Removes a life from the scoreboard

@@ -23,7 +23,7 @@ class Phrase {
         const phraseDom = document.getElementById('phrase').getElementsByTagName('ul')[0];
 
         for (let i = 0; i < this.phrase.length; i++) {
-            if (this.phrase[i] !== '') {
+            if (this.phrase[i] !== ' ') {
                 phraseDisplay += `<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`;
             } else {
                 phraseDisplay += `<li class="hide space"> </li>`;
@@ -38,7 +38,7 @@ class Phrase {
     */
 
     checkLetter(letter) {
-
+        return this.phrase.includes(letter);
     }
 
     /**
@@ -47,7 +47,11 @@ class Phrase {
     */
 
     showMatchedLetter(letter) {
-
+        const selectLetter = document.getElementsByClassName(letter)
+        selectLetter.forEach(element => {
+            element.className.remove('hide');
+            element.className.add('show');
+        });
 
     }
 
